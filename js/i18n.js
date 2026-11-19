@@ -213,6 +213,7 @@
         if (!n.nodeValue || !n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
         var p = n.parentNode ? n.parentNode.nodeName : "";
         if (p === "SCRIPT" || p === "STYLE") return NodeFilter.FILTER_REJECT;
+        if (n.parentElement && n.parentElement.closest(".lang-switch")) return NodeFilter.FILTER_REJECT;
         return NodeFilter.FILTER_ACCEPT;
       }
     });
@@ -229,19 +230,36 @@
       else node.nodeValue = orig;
     }
     document.documentElement.setAttribute("lang", lang);
-    var btns = document.querySelectorAll("[data-lang]");
-    for (var b = 0; b < btns.length; b++)
-      btns[b].setAttribute("aria-pressed", btns[b].getAttribute("data-lang") === lang ? "true" : "false");
+    var names = { en: "English", fr: "Français", rw: "Kinyarwanda" };
+    var cur = document.getElementById("langCurrent");
+    if (cur) cur.textContent = names[lang] || "English";
+    var items = document.querySelectorAll(".lang-menu [data-lang]");
+    for (var b = 0; b < items.length; b++)
+      items[b].setAttribute("aria-current", items[b].getAttribute("data-lang") === lang ? "true" : "false");
+    closeMenu();
     try { localStorage.setItem("lynk_lang", lang); } catch (e) {}
   }
 
+  var menuEl, btnEl;
+  function openMenu() { if (menuEl) { menuEl.classList.add("open"); if (btnEl) btnEl.setAttribute("aria-expanded", "true"); } }
+  function closeMenu() { if (menuEl) { menuEl.classList.remove("open"); if (btnEl) btnEl.setAttribute("aria-expanded", "false"); } }
+
   function init() {
     collect(document.body);
-    var saved = "en";
-    try { saved = localStorage.getItem("lynk_lang") || "en"; } catch (e) {}
-    var sw = document.querySelectorAll("[data-lang]");
+    btnEl = document.getElementById("langBtn");
+    menuEl = document.getElementById("langMenu");
+    if (btnEl) btnEl.addEventListener("click", function (e) {
+      e.stopPropagation();
+      if (menuEl && menuEl.classList.contains("open")) closeMenu(); else openMenu();
+    });
+    var sw = document.querySelectorAll(".lang-menu [data-lang]");
     for (var i = 0; i < sw.length; i++)
       sw[i].addEventListener("click", function () { apply(this.getAttribute("data-lang")); });
+    document.addEventListener("click", function (e) {
+      if (menuEl && menuEl.classList.contains("open") && !(e.target.closest && e.target.closest(".lang-switch"))) closeMenu();
+    });
+    var saved = "en";
+    try { saved = localStorage.getItem("lynk_lang") || "en"; } catch (e) {}
     apply(saved === "fr" || saved === "rw" ? saved : "en");
   }
 

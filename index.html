@@ -25,10 +25,17 @@
         <a href="#learn" style="color: rgb(51, 64, 58); text-decoration: none;">Learn</a>
         <a href="#trust" style="color: rgb(51, 64, 58); text-decoration: none;">Security</a>
         <a href="#faq" style="color: rgb(51, 64, 58); text-decoration: none;">FAQ</a>
-        <div class="lang-switch" role="group" aria-label="Language">
-          <button type="button" data-lang="en" aria-pressed="true">EN</button>
-          <button type="button" data-lang="fr" aria-pressed="false">FR</button>
-          <button type="button" data-lang="rw" aria-pressed="false">RW</button>
+        <div class="lang-switch">
+          <button type="button" id="langBtn" aria-haspopup="true" aria-expanded="false" aria-label="Choose language">
+            <svg class="lang-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18"></path></svg>
+            <span id="langCurrent">English</span>
+            <svg class="lang-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+          </button>
+          <div class="lang-menu" id="langMenu" role="menu">
+            <button type="button" role="menuitem" data-lang="en">English</button>
+            <button type="button" role="menuitem" data-lang="fr">Français</button>
+            <button type="button" role="menuitem" data-lang="rw">Kinyarwanda</button>
+          </div>
         </div>
       </div>
       <a href="#join" class="press" style="display: inline-flex; align-items: center; min-height: 46px; padding: 0px 22px; border-radius: 14px; background: rgb(11, 59, 45); color: rgb(255, 255, 255); font-weight: 600; font-size: 15px; text-decoration: none; box-shadow: rgba(255, 255, 255, 0.14) 0px 1px 0px inset;">Join the waitlist</a>
