@@ -53,3 +53,11 @@ a{color:#0E7A50}a:hover{color:#0B3B2D}
   #navLinks.open{display:flex !important;flex-direction:column;gap:4px !important;position:absolute;top:calc(100% + 10px);left:0;right:0;background:#fff;border:1px solid rgb(227,231,225);border-radius:18px;box-shadow:rgba(11,20,16,.22) 0px 24px 44px -24px;padding:10px;z-index:60}
   #navLinks.open a{padding:13px 14px;border-radius:12px;font-size:17px;color:rgb(20,40,32) !important}
 }
+
+/* Language switcher */
+.lang-switch{display:inline-flex;gap:2px;padding:3px;border:1px solid rgb(227,231,225);border-radius:12px;background:#fff}
+.lang-switch button{border:0;background:transparent;font:600 13px Geist,Arial,sans-serif;color:#33403A;padding:6px 9px;border-radius:9px;cursor:pointer;line-height:1}
+.lang-switch button[aria-pressed="true"]{background:#0B3B2D;color:#fff}
+@media (max-width:760px){
+  #navLinks.open .lang-switch{align-self:flex-start;margin-top:6px}
+}
