@@ -39,3 +39,17 @@ a{color:#0E7A50}a:hover{color:#0B3B2D}
   div[aria-label^="A woman laughing"] img{object-position:50% 12% !important}
   div[aria-label^="A woman laughing"] ~ div.float{top:240px !important;width:230px !important}
 }
+
+/* Mobile nav menu (hamburger) */
+#navToggle{display:none;align-items:center;justify-content:center;width:46px;height:46px;border:1px solid rgb(227,231,225);border-radius:14px;background:#fff;cursor:pointer;padding:0;flex:0 0 auto}
+#navToggle span{position:relative;display:block;width:20px;height:2px;background:#0B3B2D;border-radius:2px}
+#navToggle span::before,#navToggle span::after{content:"";position:absolute;left:0;display:block;width:20px;height:2px;background:#0B3B2D;border-radius:2px}
+#navToggle span::before{top:-6px}
+#navToggle span::after{top:6px}
+@media (max-width:760px){
+  nav[aria-label="Main"]{position:relative}
+  #navToggle{display:inline-flex}
+  nav[aria-label="Main"] > a.press{display:none !important}
+  #navLinks.open{display:flex !important;flex-direction:column;gap:4px !important;position:absolute;top:calc(100% + 10px);left:0;right:0;background:#fff;border:1px solid rgb(227,231,225);border-radius:18px;box-shadow:rgba(11,20,16,.22) 0px 24px 44px -24px;padding:10px;z-index:60}
+  #navLinks.open a{padding:13px 14px;border-radius:12px;font-size:17px;color:rgb(20,40,32) !important}
+}

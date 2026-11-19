@@ -97,3 +97,12 @@
     });
   }
 })();
+
+/* Mobile nav menu toggle */
+(function(){
+  var t=document.getElementById('navToggle'),m=document.getElementById('navLinks');
+  if(t&&m){
+    t.addEventListener('click',function(){var o=m.classList.toggle('open');t.setAttribute('aria-expanded',o?'true':'false');});
+    Array.prototype.forEach.call(m.querySelectorAll('a'),function(a){a.addEventListener('click',function(){m.classList.remove('open');t.setAttribute('aria-expanded','false');});});
+  }
+})();
