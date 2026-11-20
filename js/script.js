@@ -1,4 +1,5 @@
 (function () {
+  function t(s) { return (window.LynkI18n && window.LynkI18n.t) ? window.LynkI18n.t(s) : s; }
   // ---------- Quick question ----------
   var group = document.querySelector('[role="group"][aria-label="Answers"]');
   if (group) {
@@ -24,15 +25,15 @@
           b.style.background = showRight ? '#EAF7F0' : (chosen ? '#FCEDEA' : '#FFFFFF');
           spans[0].style.background = showRight ? '#0E7A50' : (chosen ? '#B93A2E' : '#F1F3EE');
           spans[0].style.color = (showRight || chosen) ? '#FFFFFF' : '#0B1410';
-          spans[2].textContent = showRight ? 'Correct' : (chosen ? 'Not quite' : '');
+          spans[2].textContent = showRight ? t('Correct') : (chosen ? t('Not quite') : '');
           spans[2].style.color = showRight ? '#0E7A50' : '#B93A2E';
         });
         feedback.hidden = false;
         feedback.style.background = picked.right ? '#EAF7F0' : '#FCEDEA';
         feedback.style.color = picked.right ? '#0B3B2D' : '#7A2A20';
         feedback.textContent = picked.right
-          ? 'Exactly. A share is a small piece of ownership in the company, so its value rises and falls with the business.'
-          : 'Not quite. A share is a small piece of ownership in the company, not a loan or a savings account.';
+          ? t('Exactly. A share is a small piece of ownership in the company, so its value rises and falls with the business.')
+          : t('Not quite. A share is a small piece of ownership in the company, not a loan or a savings account.');
       });
     });
   }
@@ -60,13 +61,15 @@
         sign.style.background = isOpen ? '#0B3B2D' : '#E9EEEA';
         sign.style.color = isOpen ? '#FFFFFF' : '#0B3B2D';
         var p = row.querySelector('p');
-        if (isOpen && !p) {
-          p = document.createElement('p');
-          p.className = 'faq-a';
-          p.style.cssText = 'margin:0;padding:0 60px 24px 4px;font-size:17px;color:#44524B';
-          p.textContent = answers[i];
-          row.appendChild(p);
-        } else if (!isOpen && p) {
+        if (isOpen) {
+          if (!p) {
+            p = document.createElement('p');
+            p.className = 'faq-a';
+            p.style.cssText = 'margin:0;padding:0 60px 24px 4px;font-size:17px;color:#44524B';
+            row.appendChild(p);
+          }
+          p.textContent = t(answers[i]);
+        } else if (p) {
           p.remove();
         }
       });
@@ -75,6 +78,7 @@
       btn.addEventListener('click', function () { open = open === i ? -1 : i; render(); });
     });
     render();
+    document.addEventListener('lynk:lang', render);
   }
 
   // ---------- Waitlist ----------
@@ -87,12 +91,12 @@
       var email = input.value.trim();
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         msg.style.color = '#FFD3C9';
-        msg.textContent = 'Enter a valid email address, like name@example.com.';
+        msg.textContent = t('Enter a valid email address, like name@example.com.');
         input.focus();
         return;
       }
       msg.style.color = '#63F3B6';
-      msg.textContent = 'Thanks for your interest. The waitlist opens soon, so check back here.';
+      msg.textContent = t('Thanks for your interest. The waitlist opens soon, so check back here.');
       form.reset();
     });
   }

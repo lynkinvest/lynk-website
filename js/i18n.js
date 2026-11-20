@@ -101,6 +101,17 @@
       "Company": "Entreprise",
       "Terms and privacy": "Conditions et confidentialité",
       "Contact": "Contact",
+      "Correct": "Correct",
+      "Not quite": "Pas tout à fait",
+      "Exactly. A share is a small piece of ownership in the company, so its value rises and falls with the business.": "Exactement. Une action est une petite part de propriété de l'entreprise, donc sa valeur monte et descend avec l'activité.",
+      "Not quite. A share is a small piece of ownership in the company, not a loan or a savings account.": "Pas tout à fait. Une action est une petite part de propriété de l'entreprise, pas un prêt ni un compte d'épargne.",
+      "Lynk is opening soon. Join the waitlist and we will tell you the day accounts open.": "Lynk ouvre bientôt. Rejoignez la liste d'attente et nous vous dirons le jour où les comptes ouvrent.",
+      "A licensed broker partner, inside Rwanda’s capital-markets rules. How your shares are held is confirmed with the broker before launch.": "Un partenaire courtier agréé, selon les règles des marchés de capitaux du Rwanda. La façon dont vos actions sont détenues est confirmée avec le courtier avant le lancement.",
+      "With MTN Mobile Money, Airtel Money or a bank transfer. Lynk shows any fee and the arrival time before you pay.": "Avec MTN Mobile Money, Airtel Money ou un virement bancaire. Lynk affiche tout frais et le délai d'arrivée avant que vous payiez.",
+      "Our Circle brings your ikimina into Lynk. Your cash rotation stays as it is, and the group can choose to invest together in a separate pool, with every member’s share tracked on its own.": "Notre Cercle amène votre ikimina dans Lynk. Votre rotation d'argent reste telle quelle, et le groupe peut choisir d'investir ensemble dans un pool distinct, la part de chaque membre étant suivie séparément.",
+      "Yes. Share prices go down as well as up, and you could get back less than you invest. Lynk shows the risk before every purchase.": "Oui. Le cours des actions peut baisser comme monter, et vous pourriez récupérer moins que votre investissement. Lynk affiche le risque avant chaque achat.",
+      "Enter a valid email address, like name@example.com.": "Entrez une adresse e-mail valide, comme nom@exemple.com.",
+      "Thanks for your interest. The waitlist opens soon, so check back here.": "Merci de votre intérêt. La liste d'attente ouvre bientôt, revenez ici.",
       "© 2026 Lynk Ltd, registered in Rwanda, TIN 156077063. Investing will be offered through a licensed broker partner, subject to regulatory approval. Lynk does not give financial advice. The value of shares can go down as well as up, and you could get back less than you invest.": "© 2026 Lynk Ltd, enregistrée au Rwanda, NIF 156077063. L'investissement sera proposé via un partenaire courtier agréé, sous réserve d'approbation réglementaire. Lynk ne donne pas de conseils financiers. La valeur des actions peut varier à la baisse comme à la hausse, et vous pourriez récupérer moins que votre investissement."
     },
     rw: {
@@ -202,8 +213,29 @@
       "Company": "Sosiyete",
       "Terms and privacy": "Amabwiriza n'ibanga",
       "Contact": "Twandikire",
+      "Correct": "Ni byo",
+      "Not quite": "Si byo rwose",
+      "Exactly. A share is a small piece of ownership in the company, so its value rises and falls with the business.": "Ni byo rwose. Umugabane ni igice gito cyo gutunga sosiyete, bityo agaciro kawo karazamuka kakanamanuka hamwe n'ubucuruzi.",
+      "Not quite. A share is a small piece of ownership in the company, not a loan or a savings account.": "Si byo rwose. Umugabane ni igice gito cyo gutunga sosiyete, si inguzanyo cyangwa konti y'ukuzigama.",
+      "Lynk is opening soon. Join the waitlist and we will tell you the day accounts open.": "Lynk igiye gufungura vuba. Iyandikishe ku rutonde kandi tuzakubwira umunsi konti zizafungura.",
+      "A licensed broker partner, inside Rwanda’s capital-markets rules. How your shares are held is confirmed with the broker before launch.": "Umufatanyabikorwa w'umucuruzi wemewe, hakurikijwe amabwiriza y'isoko ry'imari ry'u Rwanda. Uburyo imigabane yawe ibikwa buzemezwa n'umucuruzi mbere yo gutangira.",
+      "With MTN Mobile Money, Airtel Money or a bank transfer. Lynk shows any fee and the arrival time before you pay.": "Ukoresheje MTN Mobile Money, Airtel Money cyangwa kohereza muri banki. Lynk yerekana amafaranga yose n'igihe bizageraho mbere yo kwishyura.",
+      "Our Circle brings your ikimina into Lynk. Your cash rotation stays as it is, and the group can choose to invest together in a separate pool, with every member’s share tracked on its own.": "Uruziga Rwacu ruzana ikimina cyawe muri Lynk. Uburyo mukuza amafaranga bukomeza uko buri, kandi itsinda rishobora guhitamo gushora hamwe mu kigega cyihariye, umugabane wa buri munyamuryango ukurikiranwa wenyine.",
+      "Yes. Share prices go down as well as up, and you could get back less than you invest. Lynk shows the risk before every purchase.": "Yego. Ibiciro by'imigabane birazamuka bikanamanuka, kandi ushobora gusubizwa make kuruta ibyo washoyemo. Lynk yerekana ingorane mbere ya buri kugura.",
+      "Enter a valid email address, like name@example.com.": "Andika aderesi ya imeyili yemewe, nka izina@urugero.com.",
+      "Thanks for your interest. The waitlist opens soon, so check back here.": "Murakoze kwitabira. Urutonde ruzafungura vuba, ongera ugaruke hano.",
       "© 2026 Lynk Ltd, registered in Rwanda, TIN 156077063. Investing will be offered through a licensed broker partner, subject to regulatory approval. Lynk does not give financial advice. The value of shares can go down as well as up, and you could get back less than you invest.": "© 2026 Lynk Ltd, yanditswe mu Rwanda, TIN 156077063. Ishoramari rizatangwa binyuze ku mufatanyabikorwa w'umucuruzi wemewe, bitewe no kwemererwa n'inzego zibishinzwe. Lynk ntitanga inama z'imari. Agaciro k'imigabane gashobora kumanuka cyangwa kuzamuka, kandi ushobora gusubizwa make kuruta ibyo washoyemo."
     }
+  };
+
+  var current = "en";
+  window.LynkI18n = {
+    t: function (s) {
+      if (current === "en") return s;
+      var d = T[current], k = ("" + s).trim();
+      return (d && d[k] != null) ? d[k] : s;
+    },
+    lang: function () { return current; }
   };
 
   var nodes = [];
@@ -222,6 +254,7 @@
   }
 
   function apply(lang) {
+    current = lang;
     for (var i = 0; i < nodes.length; i++) {
       var node = nodes[i][0], orig = nodes[i][1], key = orig.trim();
       if (lang === "en") { node.nodeValue = orig; continue; }
@@ -238,6 +271,7 @@
       items[b].setAttribute("aria-current", items[b].getAttribute("data-lang") === lang ? "true" : "false");
     closeMenu();
     try { localStorage.setItem("lynk_lang", lang); } catch (e) {}
+    try { document.dispatchEvent(new CustomEvent("lynk:lang", { detail: lang })); } catch (e) {}
   }
 
   var menuEl, btnEl;
